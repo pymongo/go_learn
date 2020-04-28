@@ -2,26 +2,27 @@ package main
 
 import (
 	"fmt"
-)
-
-const (
-	gender_male = iota
-	gender_femail = iota
-)
-
-const (
-	trade_type_buy = iota
-	trade_type_sell
+	"io/ioutil"
+	"log"
+	"net/http"
 )
 
 func main() {
-	gender := gender_femail
-	trade_type := trade_type_sell
-	fmt.Println(gender) // 1
-	fmt.Println(trade_type) // 1
+	httpRequest()
 }
 
-func add(x int32, y int32) int32 {
-	return x + y
+func httpRequest()  {
+	resp, err := http.Get("https://jsonplaceholder.typicode.com/posts/1")
+	if err != nil {
+		fmt.Println("Error")
+		log.Fatal(err)
+	} else {
+		if resp.StatusCode == http.StatusOK {
+			bodyBytes, err := ioutil.ReadAll(resp.Body)
+			if err != nil {
+				log.Fatal(err)
+			}
+			fmt.Println(string(bodyBytes))
+		}
+	}
 }
-
