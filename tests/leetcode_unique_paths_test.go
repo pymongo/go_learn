@@ -6,11 +6,10 @@ import (
 )
 
 func uniquePaths(m int, n int) int {
-	// C(m,m+n)
-	// C(3,5) 5*4*3 / 1*2*3
+	//m, n = m-1, n-1
 	result := 1
-	sum := m+n
-	for i:=sum; i>n; i-- {
+	sum := m+n-2
+	for i:=sum; i>n-1; i-- {
 		result *= i
 	}
 	for i:=1; i<m; i++ {
@@ -19,8 +18,9 @@ func uniquePaths(m int, n int) int {
 	return result
 }
 
+// faile(23, 12)
 func TestUniquePaths(t *testing.T) {
-	fmt.Println(uniquePaths(2, 3))
+	fmt.Println(uniquePaths(7, 3))
 	//got := uniquePaths(1,1)
 	//if got != 1 {
 	//	t.Errorf("uniquePaths(m int, n int) = %d; want 1", got)
