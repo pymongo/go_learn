@@ -1,4 +1,4 @@
-module go_http_client
+module go_learn
 
 go 1.14
 
