@@ -5,22 +5,25 @@ import (
 	"testing"
 )
 
+// leetcode62. unique-paths
 func uniquePaths(m int, n int) int {
-	//m, n = m-1, n-1
-	result := 1
-	sum := m+n-2
-	for i:=sum; i>n-1; i-- {
-		result *= i
+	// 端点是4x4，但是棋盘的格子就3x3
+	max, min := m-1, n-1
+	if min > max {
+		max, min = min, max
 	}
-	for i:=1; i<m; i++ {
-		result /= i
+	result := 1
+	sum := max+min
+	for i:=0; i<min; i++ {
+		result *= sum-i
+		result /= i+1
 	}
 	return result
 }
 
 // faile(23, 12)
 func TestUniquePaths(t *testing.T) {
-	fmt.Println(uniquePaths(7, 3))
+	fmt.Println(uniquePaths(23, 12))
 	//got := uniquePaths(1,1)
 	//if got != 1 {
 	//	t.Errorf("uniquePaths(m int, n int) = %d; want 1", got)

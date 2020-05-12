@@ -7,24 +7,24 @@
 3. 做一道leetcode题
 4. 解决一个多线程问题(如哲学家进餐问题)
 
-## Go测试与benchmark
+## Go命令
 
-实事求是的说，我更喜欢Rust给一个函数加上`#[test]`宏就能点绿色播放图标直接运行的简便。
+### gofmt和go fmt
 
+格式化代码用的，我就没成功过，rust也有。
 
-## launchctl
+### go list
 
-查看当前所有资源的最大限制`launchctl limit`第一列是软件限制，第二列是硬件限制
+列出项目的包名
 
-```
-localhost:~ w$ launchctl limit
-	cpu         unlimited      unlimited      
-	filesize    unlimited      unlimited      
-	data        unlimited      unlimited      
-	stack       8388608        67104768       
-	core        0              unlimited      
-	rss         unlimited      unlimited      
-	memlock     unlimited      unlimited      
-	maxproc     709            1064           
-	maxfiles    1024           10240 
-```
+### go vet
+
+检查语法错误，这个还算有用
+
+### go env
+
+打印go的环境变量
+
+### go tool pprof
+
+性能分析工具，服务器内存/CPU异常使用率的Debu工具
